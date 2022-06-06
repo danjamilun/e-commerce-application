@@ -21,21 +21,21 @@ const {
 //ruta kojom se zove create metoda
 router.post('/category/create/:userId',//prvo se pozivaju svi navedeni middlwarei a tek onda metoda create
             requireSignin,
-            isAdmin,
+            isAuth,
             isAdmin,
             create
 );
 //ruta za upadate-anje kategorije, triba bit navaden id od kategorije i usera
 router.put('/category/:categoryId/:userId',//prvo se pozivaju svi navedeni middlwarei a tek nakon njih metoda update
             requireSignin,
-            isAdmin,
+            isAuth,
             isAdmin,
             update
 );
 //ruta za brisanje kategorije, id od kategorije i user id
 router.delete('/category/:categoryId/:userId',//prvo se pozivaju svi navedeni middlwarei a tek nakon njih metoda delete
             requireSignin,
-            isAdmin,
+            isAuth,
             isAdmin,
             remove
 );

@@ -9,6 +9,7 @@ const {
   getStatusValues,
   orderById,
   updateOrderStatus,
+  listBySearch,
 } = require("../controllers/order");
 const { decreaseQuantity } = require("../controllers/product");
 //
@@ -20,7 +21,7 @@ router.post(
   decreaseQuantity,
   create
 );
-
+router.post("/order/by/search/:userId", requireSignin, isAuth, isAdmin, listBySearch);
 // dohvat liste narudzbi
 router.get("/order/list/:userId", requireSignin, isAuth, isAdmin, listOrders);
 // dohvat statusa od narudzbe

@@ -35,7 +35,8 @@ exports.create = (req, res) => {
       });
     }
     //check for all fields, provjera da su svi uneseni
-    const { name, description, price, category, quantity, shipping } = fields;
+    const { name, description, price, category, quantity, shipping, rate } =
+      fields;
 
     if (
       !name ||
@@ -103,22 +104,7 @@ exports.update = (req, res) => {
         error: "Image could not be uploaded",
       });
     }
-    //dohvat svega unesenog
-    const { name, description, price, category, quantity, shipping } = fields;
-    //check for all fields, provjera da su svi uneseni
-    if (
-      !name ||
-      !description ||
-      !price ||
-      !category ||
-      !quantity ||
-      !shipping
-    ) {
-      return res.status(400).json({
-        //ako nije nesto uneseno
-        error: "All fields are required",
-      });
-    }
+
     //za update-anje postojeceg producta sa novim podacima
     let product = req.product; //dohvat postojeceg produkta
     product = _.extend(product, fields); //lodash paket, extend prima za prvi argument postojeci produkt, a drugi arg. novi podaci za update
